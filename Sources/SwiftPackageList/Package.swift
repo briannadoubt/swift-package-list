@@ -70,6 +70,12 @@ extension Package {
     public var hasLicense: Bool {
         return license != nil
     }
+
+    /// The name of the package concatenated with version if available.
+    public var nameWithVersion: String {
+        guard let version else { return name }
+        return "\(name) (\(version))"
+    }
 }
 
 // MARK: - Deprecations

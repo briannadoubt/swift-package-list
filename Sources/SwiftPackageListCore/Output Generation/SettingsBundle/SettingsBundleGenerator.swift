@@ -50,7 +50,7 @@ struct SettingsBundleGenerator: OutputGenerator {
     }
     
     private func createAcknowledgementsPlist() throws {
-        let packageChildPanes: [Specifier] = packages.map { .childPane(title: $0.name, file: "Packages/\($0.name)") }
+        let packageChildPanes: [Specifier] = packages.map { .childPane(title: $0.nameWithVersion, file: "Packages/\($0.name)") }
         let preferenceSpecifiers: [Specifier] = [.group(title: "Licenses")] + packageChildPanes
         let acknowledgementsPlist = PropertyList(stringsTable: "Acknowledgements", preferenceSpecifiers: preferenceSpecifiers)
         let encodedAcknowledgements = try encoder.encode(acknowledgementsPlist)
